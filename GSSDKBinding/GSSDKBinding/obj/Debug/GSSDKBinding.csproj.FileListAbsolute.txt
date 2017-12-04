@@ -1,0 +1,5 @@
+C:\Projects\Binding.GSSDK\GSSDKBinding\GSSDKBinding\bin\Debug\GSSDKBinding.dll
+C:\Projects\Binding.GSSDK\GSSDKBinding\GSSDKBinding\bin\Debug\GSSDKBinding.pdb
+C:\Projects\Binding.GSSDK\GSSDKBinding\GSSDKBinding\obj\Debug\GSSDKBinding.csproj.CoreCompileInputs.cache
+C:\Projects\Binding.GSSDK\GSSDKBinding\GSSDKBinding\obj\Debug\GSSDKBinding.dll
+C:\Projects\Binding.GSSDK\GSSDKBinding\GSSDKBinding\obj\Debug\GSSDKBinding.pdb
