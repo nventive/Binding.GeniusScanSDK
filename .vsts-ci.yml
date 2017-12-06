@@ -1,0 +1,40 @@
+resources:
+- repo: self
+  clean: true
+  lfs: true
+
+phases:
+- phase: VS_Latest
+  variables:
+    Configuration: Release
+    Platform: Any CPU
+
+  queue:
+    name: Default
+    demands:
+    - Xamarin -equals 4.5.0.486
+
+  steps:
+  - task: NuGetCommand@2
+    inputs:
+      solution: "GSSDKBinding/GSSDKBinding.sln"
+      feedRestore: "36e50407-5798-43e2-b0e2-a0de0e3f46c6"
+
+  - task: MSBuild@1
+    inputs:
+      solution: Build\Build.proj
+      msbuildLocationMethod: version
+      msbuildVersion: latest
+      msbuildArchitecture: x86
+      msbuildargs: /p:PackageOutputPath=$(build.artifactstagingdirectory) /p:PackageVersion=$(GitVersion.SemVer) /p:InformationalVersion=$(GitVersion.InformationalVersion)
+      clean: false
+      maximumCpuCount: true
+      restoreNugetPackages: false
+      logProjectEvents: false
+      createLogFile: false
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: "Packages"
+      ArtifactType: "Container"
