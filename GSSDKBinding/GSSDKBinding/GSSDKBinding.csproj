@@ -3,6 +3,7 @@
 		<TargetFramework>Xamarin.iOS10</TargetFramework>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Authors>nventive</Authors>
+		<Description>An iOS binding over GeniusScan SDK</Description>
 		<TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
 		<TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
 		<NuGetTargetMoniker>Xamarin.iOS,Version=v1.0</NuGetTargetMoniker>
