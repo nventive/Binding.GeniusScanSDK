@@ -25,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ObjcBindingNativeFramework Include="NativeReferences\GSSDK.framework" />
+		<ObjcBindingNativeFramework Include="GSSDK.framework" />
 		<ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
 		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
 	</ItemGroup>
