@@ -12,7 +12,7 @@ phases:
   queue:
     name: Default
     demands:
-    - Xamarin -equals 4.5.0.486
+    - Xamarin -equals 4.7.10.22
 
   steps:
   - task: gittools.gitversion.gitversion-task.GitVersion@3
