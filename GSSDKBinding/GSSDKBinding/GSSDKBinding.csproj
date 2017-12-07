@@ -8,10 +8,11 @@
 		<TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
 		<NuGetTargetMoniker>Xamarin.iOS,Version=v1.0</NuGetTargetMoniker>
 		<IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+		<OutputType>Library</OutputType>
 		<DefineConstants>$(DefineConstants);IOS1_0;XAMARIN;XAMARIN_IOS;XAMARIN_IOS_UNIFIED</DefineConstants>
-		<DebugType>full</DebugType>
 		<LanguageTargets>$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets</LanguageTargets>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Optimize>true</Optimize>
 	</PropertyGroup>
 
 	<ItemGroup>
