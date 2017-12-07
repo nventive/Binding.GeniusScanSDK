@@ -17,6 +17,8 @@ phases:
   steps:
   - task: gittools.gitversion.gitversion-task.GitVersion@3
 
+  - task: NuGetToolInstaller@0
+
   - task: NuGetCommand@2
     inputs:
       solution: "GSSDKBinding/GSSDKBinding.sln"
