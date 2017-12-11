@@ -145,7 +145,7 @@ namespace GSSDK
 	public interface GSKScanFactoryProtocol
 	{
 		// @required -(id<GSKScanProtocol>)createScan;
-		[Export("createScan")]
+		[Export("createScan:")]
 		GSKScanProtocol GetCreateScan();
 	}
 
