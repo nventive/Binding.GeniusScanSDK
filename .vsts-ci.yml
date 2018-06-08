@@ -4,33 +4,30 @@ resources:
   lfs: true
 
 phases:
-- phase: VS_Latest
+- phase: Main
   variables:
     Configuration: Release
     Platform: Any CPU
 
   queue:
-    name: Default
-    demands:
-    - Xamarin -equals 4.5.0.486
+    name: Hosted macOS Preview
 
   steps:
-  - task: gittools.gitversion.gitversion-task.GitVersion@3
-
   - task: NuGetToolInstaller@0
+    inputs:
+      versionSpec: 4.7.0
 
   - task: NuGetCommand@2
     inputs:
-      solution: "GSSDKBinding/GSSDKBinding.sln"
-      feedRestore: "36e50407-5798-43e2-b0e2-a0de0e3f46c6"
+      solution: "GSSDKBinding.sln"
 
   - task: MSBuild@1
     inputs:
-      solution: Build\Build.proj
+      solution: GSSDKBinding.sln
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x86
-      msbuildargs: ""
+      msbuildargs: /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:GeneratePackageOnBuild=true
       clean: false
       maximumCpuCount: true
       restoreNugetPackages: false
@@ -39,6 +36,6 @@ phases:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: "Packages"
+      PathtoPublish: $(Build.ArtifactStagingDirectory)
+      ArtifactName: $(Build.DefinitionName)
       ArtifactType: "Container"

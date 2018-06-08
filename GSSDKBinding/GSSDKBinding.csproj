@@ -1,16 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 	<PropertyGroup>
-		<TargetFramework>Xamarin.iOS10</TargetFramework>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Authors>nventive</Authors>
-		<Description>An iOS binding over GeniusScan SDK</Description>
+		<TargetFramework>xamarinios10</TargetFramework>
 		<TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
 		<TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
 		<NuGetTargetMoniker>Xamarin.iOS,Version=v1.0</NuGetTargetMoniker>
 		<IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
 		<DefineConstants>$(DefineConstants);IOS1_0;XAMARIN;XAMARIN_IOS;XAMARIN_IOS_UNIFIED</DefineConstants>
-		<LanguageTargets>$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets</LanguageTargets>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<GenerateAssemblyVersion>False</GenerateAssemblyVersion>
+		<GenerateAssemblyFileVersion>False</GenerateAssemblyFileVersion>
+		<GenerateAssemblyInformationalVersion>False</GenerateAssemblyInformationalVersion>
+		<OutputPath>bin\$(Configuration)</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>nventive</Authors>
+		<Description>An iOS binding over GeniusScan SDK</Description>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -20,18 +25,30 @@
 	<ItemGroup>
 		<Reference Include="System" />
 		<Reference Include="Xamarin.iOS" />
-		
+
 		<Compile Remove="ApiDefinitions.cs" />
 		<Compile Remove="StructsAndEnums.cs" />
-		
+
+		<None Include="ApiDefinitions.cs" />
+		<None Include="StructsAndEnums.cs" />
+
 		<ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
 		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
-		
+
 		<NativeReference Include="GSSDK.framework">
 			<Kind>Framework</Kind>
 			<ForceLoad>True</ForceLoad>
 			<Frameworks>AVFoundation Foundation CoreGraphics CoreMedia UIKit</Frameworks>
 			<LinkerFlags>-ObjC</LinkerFlags>
 		</NativeReference>
+	</ItemGroup>
+
+	<Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+
+	<ItemGroup>
+		<PackageReference Include="GitVersionTask" Version="4.0.0-beta0012">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 </Project>
