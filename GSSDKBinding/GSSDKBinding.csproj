@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+	<PropertyGroup>
+		<TargetFramework>xamarinios10</TargetFramework>
+		<TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
+		<TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+		<NuGetTargetMoniker>Xamarin.iOS,Version=v1.0</NuGetTargetMoniker>
+		<IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+		<DefineConstants>$(DefineConstants);IOS1_0;XAMARIN;XAMARIN_IOS;XAMARIN_IOS_UNIFIED</DefineConstants>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<GenerateAssemblyVersion>False</GenerateAssemblyVersion>
+		<GenerateAssemblyFileVersion>False</GenerateAssemblyFileVersion>
+		<GenerateAssemblyInformationalVersion>False</GenerateAssemblyInformationalVersion>
+		<OutputPath>bin\$(Configuration)</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>nventive</Authors>
+		<PackageId>nventive.Binding.GeniusScanSDK</PackageId>
+		<Title>GeniusScan SDK Binding</Title>
+		<Description>An Xamarin iOS binding over GeniusScan SDK</Description>
+		<PackageProjectUrl>https://github.com/nventive/Binding.GeniusScanSDK</PackageProjectUrl>
+		<PackageLicenseUrl>https://github.com/nventive/Binding.GeniusScanSDK/blob/master/License.md</PackageLicenseUrl>
+		<PackageIconUrl>https://raw.githubusercontent.com/nventive/Binding.GeniusScanSDK/master/logo.jpg</PackageIconUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="System" />
+		<Reference Include="Xamarin.iOS" />
+
+		<Compile Remove="ApiDefinitions.cs" />
+		<Compile Remove="StructsAndEnums.cs" />
+
+		<None Include="ApiDefinitions.cs" />
+		<None Include="StructsAndEnums.cs" />
+
+		<ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
+		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+
+		<NativeReference Include="GSSDK.framework">
+			<Kind>Framework</Kind>
+			<ForceLoad>True</ForceLoad>
+			<Frameworks>AVFoundation Foundation CoreGraphics CoreMedia UIKit</Frameworks>
+			<LinkerFlags>-ObjC</LinkerFlags>
+		</NativeReference>
+	</ItemGroup>
+
+	<Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+
+	<ItemGroup>
+		<PackageReference Include="GitVersionTask" Version="4.0.0-beta0012">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+</Project>
