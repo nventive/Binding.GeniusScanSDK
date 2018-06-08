@@ -15,7 +15,12 @@
 
 	<PropertyGroup>
 		<Authors>nventive</Authors>
-		<Description>An iOS binding over GeniusScan SDK</Description>
+		<PackageId>nventive.Binding.GeniusScanSDK</PackageId>
+		<Title>GeniusScan SDK Binding</Title>
+		<Description>An Xamarin iOS binding over GeniusScan SDK</Description>
+		<PackageProjectUrl>https://github.com/nventive/Binding.GeniusScanSDK</PackageProjectUrl>
+		<PackageLicenseUrl>https://github.com/nventive/Binding.GeniusScanSDK/blob/master/License.md</PackageLicenseUrl>
+		<PackageIconUrl>https://raw.githubusercontent.com/nventive/Binding.GeniusScanSDK/master/logo.jpg</PackageIconUrl>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
